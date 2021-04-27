@@ -15,7 +15,6 @@ public class JokeFeedController {
     @Autowired
     private JokeFeederService jokeFeederService;
 
-
     @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Joke> list() {
         return jokeFeederService.list();

@@ -11,6 +11,8 @@
     <modules>
         <module>Search</module>
         <module>Feeder</module>
+		<module>simple-searcher</module>
+		<module>searcher</module>
     </modules>
 
 </project>
