@@ -1,6 +1,9 @@
 package com.gaurav.optym.gsearch.feeder;
 
 import com.gaurav.optym.gsearch.feeder.service.JokeFeederService;
+import org.h2.tools.Server;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -10,7 +13,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.client.RestTemplate;
-import org.h2.tools.Server;
 
 import java.sql.SQLException;
 
@@ -23,6 +25,7 @@ public class FeederApplication {
     public static void main(String[] args) {
         SpringApplication.run(FeederApplication.class, args);
     }
+    private static final Logger log = LoggerFactory.getLogger(FeederApplication.class);
 
     @Bean
     public RestTemplate restTemplate() {
@@ -31,6 +34,7 @@ public class FeederApplication {
 
     @Bean(initMethod = "start", destroyMethod = "stop")
     public Server inMemoryH2DatabaseaServer() throws SQLException {
+        log.info("Starting Feeder server Db instance");
         return Server.createTcpServer(
                 "-tcp", "-tcpAllowOthers", "-tcpPort", "9090");
     }
@@ -39,6 +43,7 @@ public class FeederApplication {
 
     @Scheduled(fixedDelay = 8000L)
     public void loadJokes() {
+        log.info("Loading new joke");
         jokeFeederService.getFeedData();
     }
 

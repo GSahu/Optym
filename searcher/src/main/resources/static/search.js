@@ -1,6 +1,7 @@
+searchServiceUrl="http://localhost:8081/jokesearch/api/"
 $(document).ready(function () {
             $.ajax({
-                url: "http://localhost:8081/jokesearch/api/getCategories",
+                url: window.searchServiceUrl+"getCategories",
                 datatype: "JSON",
                 type: "GET",
                 success: function (data) {
@@ -14,38 +15,18 @@ $(document).ready(function () {
             });
         });
 
-/*$(document).ready(function() {
-    $.ajax({
-            url: "http://localhost:8081/jokesearch/api/getJokesByTerm",
-            //url: "http://localhost:8081/jokesearch/api/getJokesById",
-            type : "GET",
-            dataType: 'json',
-            data: {
-            term : "call"
-            }
-    }).then(function(data) {
-
-       for (var x in data) {
-           document.getElementById('jokesByTerm').innerHTML += '<li>' + data[x].punchline + '</li>'+ "<br>";
-           console.log(data[x].punchline);
-           }
-    });
-});*/
-
 function UserAction() {
 console.log("UserAction Called")
     var key=document.getElementById("keysearch").value;
-    //alert(key);
     updateDiv();
     $.ajax({
-            url: "http://localhost:8081/jokesearch/api/getJokesByTerm",
+            url: window.searchServiceUrl+"getJokesByTerm",
             type : "GET",
             dataType: 'json',
             data: {
             term : key
             }
     }).then(function(data) {
-    //updateDiv();
 
        for (var x in data) {
            document.getElementById('jokesByTerm').innerHTML += '<li>' + data[x].setup +" "+ data[x].punchline + '</li>'+ "<br>";
@@ -61,8 +42,9 @@ console.log("UserActionAdvSearch Called")
 
     var key=document.getElementById("advsearch").value;
     var type=document.getElementById("op1").value;
+
     $.ajax({
-            url: "http://localhost:8081/jokesearch/api/getJokesByTerm",
+            url: window.searchServiceUrl+"getJokesByTerm",
             type : "GET",
             dataType: 'json',
             data: {
@@ -85,12 +67,8 @@ function updateDiv()
 
 function termNavigation() {
 console.log("termNavigation Called")
-            //updateDiv();
-
-    /*var key=document.getElementById("advsearch").value;
-    var type=document.getElementById("op1").value;*/
     $.ajax({
-            url: "http://localhost:8081/jokesearch/api/getRecentSearchedTerms",
+            url: window.searchServiceUrl+"getRecentSearchedTerms",
             type : "GET",
             dataType: 'json',
     }).then(function(data) {

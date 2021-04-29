@@ -27,7 +27,7 @@ public class OfficialJokeProvider implements FeedProvider {
         try {
 
             fetchedData = restTemplate.getForObject(URI.create(endpoint), Joke.class);
-            System.out.println(fetchedData.toString());
+            log.info(fetchedData.toString());
 
         } catch (RestClientException e) {
             log.error("Error while fetching data from " + endpoint + "\n" + e.getMessage());

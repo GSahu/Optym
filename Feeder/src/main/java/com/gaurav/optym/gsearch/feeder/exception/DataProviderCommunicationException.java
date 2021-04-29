@@ -21,7 +21,7 @@ public class DataProviderCommunicationException extends RuntimeException {
         this.integrationEndpoint = integrationEndpoint;
     }
 
-    public String getIntegrationName() {
+    public String getIntegratiolonName() {
         return integrationName;
     }
 
