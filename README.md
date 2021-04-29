@@ -21,3 +21,10 @@ How to do it ?
 
 Simple UI
 ![img_1.png](img_1.png)
+
+How to run the services:
+
+    Order of starting the services:
+    1. Feeder
+    2. Search
+    3. Searcher
