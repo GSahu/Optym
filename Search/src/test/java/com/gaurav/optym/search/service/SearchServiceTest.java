@@ -3,7 +3,6 @@ package com.gaurav.optym.search.service;
 import com.gaurav.optym.search.domain.Joke;
 import com.gaurav.optym.search.model.Terms;
 import com.gaurav.optym.search.repository.JokeRepositoryImpl;
-import com.gaurav.optym.search.repository.TermRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
