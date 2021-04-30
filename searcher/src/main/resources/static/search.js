@@ -34,6 +34,17 @@ console.log("UserAction Called")
            }
     });
 }
+function UserActionDownloadJoke() {
+console.log("UserActionDownloadJoke Called")
+    var key=document.getElementById("keysearch").value;
+    if(key != null && key != '') {
+    var url=window.searchServiceUrl+"downloadJoke?term="+key;
+    window.location.href=url;
+    }
+    else{
+    alert("search field is empty");
+    }
+}
 
 
 function UserActionAdvSearch() {
