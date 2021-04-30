@@ -68,6 +68,8 @@ console.log("UserActionAdvSearch Called")
            console.log(data[x].punchline);
            }
     });
+    //document.getElementById("keysearch").value=key;
+    document.getElementById('keysearch').value=key;
 }
 function updateDiv()
 {
